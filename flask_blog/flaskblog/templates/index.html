@@ -1,5 +1,23 @@
 {% extends "base.html"%}
 {% block content%}
-    <h2>Home Page</h2>
-    <p>welcome to our home page</p>
+    <div class="container">
+        {%for post in posts%}
+            <div class="row border mb-3">
+                <div class="col-md-4 p-3">
+                    <div class="" >
+                        <img src="{{url_for('static',filename='profile_pic/'+ post.author.image_file)}}" alt="" style="width:100px; height:100px; border: 1px solid #eee; border-radius: 50%;display: block; object-fit: cover; " class="">
+                    </div>
+                </div>
+                <div class="col-md-8 pt-4">
+                    <a class="d-block">{{post.author.username}}</a>
+                    <p class=""><small class="text-muted">{{post.date_posted.strftime('%Y-%m-%d')}}</small></p>
+
+                </div>
+                <div class="col-md-12  pt-4">
+                    <h2 class="my-2"><a href="{{url_for('post', post_id = post.id)}}">{{post.title}}</a></h2>
+                    <p>{{post.content}}</p>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
 {% endblock content%}

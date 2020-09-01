@@ -15,7 +15,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{url_for('account')}}" class="nav-link"> Account</a>
+                    <a href="{{url_for('account')}}" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('new_post')}}" class="nav-link">New Post</a>
                 </li>
             {%else%}
                 <li class="nav-item">
@@ -26,9 +29,7 @@
                     <a href="{{url_for('user_login_page')}}" class="nav-link"> Login</a>
                 </li>
             {%endif%}
-            <li class="nav-item">
-            <a class="nav-link " href="{{url_for('about_page')}}" tabindex="-1" >about</a>
-            </li>
+        
         </ul>
     
         </div>

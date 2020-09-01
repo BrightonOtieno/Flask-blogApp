@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField
 from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from flaskblog.models import User
 from flask_login import current_user
@@ -48,3 +48,8 @@ class UserAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('That email is taken, please choose another')
+
+class PostCreateForm(FlaskForm):
+    title = StringField('title',validators=[DataRequired()])
+    content =TextAreaField('content',validators=[DataRequired()]) 
+    submit = SubmitField('post')
