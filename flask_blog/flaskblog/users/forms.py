@@ -1,9 +1,17 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField
-from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
+from wtforms import StringField,TextAreaField,SubmitField,PasswordField,BooleanField
+from wtforms.validators import DataRequired,Length,EqualTo,Email
+from flask_wtf.file import FileAllowed,FileField
 from flaskblog.models import User
 from flask_login import current_user
-from flask_wtf.file import FileAllowed,FileField
+
+
+
+
+
+
+
+
 
 class UserRegistrationForm(FlaskForm):
     username = StringField('username',validators=[DataRequired(),Length(min=2,max=20)])
@@ -49,10 +57,7 @@ class UserAccountForm(FlaskForm):
             if user:
                 raise ValidationError('That email is taken, please choose another')
 
-class PostCreateForm(FlaskForm):
-    title = StringField('title',validators=[DataRequired()])
-    content =TextAreaField('content',validators=[DataRequired()]) 
-    submit = SubmitField('post')
+
 
 class RequestResetForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(),Email()])
